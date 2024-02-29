@@ -26,32 +26,10 @@ public class VLSM {
 
 
         print(enderecoIP, mascaraDaRede, enderecoIPBinario, mascaraBinario, enderecoDaRedeBinario, enderecoDeRede, broadcast, bits, hostsValidos);
-
             System.out.println("Dique 1 para sair, senão dique qualquer número para continuar operando: ");
             Scanner leitor = new Scanner(System.in);
             menu = leitor.nextInt();
         }
-
-//      172.30.1.33
-//      255.255.0.0
-
-//      172.30.1.33
-//      255.255.255.0
-
-//      192.168.10.234
-//      255.255.255.0
-//
-//      172.17.99.71
-//      255.255.0.0
-//
-//      192.168.3.219
-//      255.255.0.0
-
-
-//    192.168.3.219
-//    255.255.255.224
-
-
     }
 
     private static void print(List<Integer> enderecoIP, List<Integer> mascaraDaRede, List<List<Integer>> enderecoIPBinario, List<List<Integer>> mascaraBinario, List<List<Integer>> enderecoDaRedeBinario, List<Integer> enderecoDeRede, List<Integer> broadcast, int bits, int hostsValidos) {
@@ -110,20 +88,16 @@ public class VLSM {
             return broadcastDecimal(mascaraBinario, enderecoDaRedeBinario, count, broadcastBinario, broadcast);
 
 
-//            return broadcastDecimal(1, enderecoDaRedeBinario, broadcastBinario, broadcast);
-
         } else if (count == 2) {
             for (int i = 0; i < 2; i++) {
                 broadcast.add(enderecoDeRede.get(i));
             }
             return broadcastDecimal(mascaraBinario, enderecoDaRedeBinario, count, broadcastBinario, broadcast);
-//            return broadcastDecimal(2, enderecoDaRedeBinario, broadcastBinario, broadcast);
         } else {
             for (int i = 0; i < 3; i++) {
                 broadcast.add(enderecoDeRede.get(i));
             }
             return broadcastDecimal(mascaraBinario, enderecoDaRedeBinario, count, broadcastBinario, broadcast);
-//            return broadcastDecimal(3, enderecoDaRedeBinario, broadcastBinario, broadcast);
         }
     }
 
@@ -153,26 +127,6 @@ public class VLSM {
         return totalHostsDisponivel;
     }
 
-
-    private static List<Integer> broadcastDecimal(int indice, List<List<Integer>> enderecoDaRedeBinario, List<List<Integer>> broadcastBinario, List<Integer> broadcast) {
-        for (int i = indice; i < enderecoDaRedeBinario.size(); i++) {
-            ArrayList<Integer> inversor = new ArrayList<>();
-            for (int j = 0; j < enderecoDaRedeBinario.get(i).size(); j++) {
-                if (enderecoDaRedeBinario.get(i).get(j).equals(0)) {
-                    inversor.add(1);
-                } else {
-                    inversor.add(0);
-                }
-            }
-            broadcastBinario.add(inversor);
-        }
-
-        System.out.println(broadcastBinario);
-
-        List<Integer> broadcastDecimal = extratorDecimalDosOctetos(broadcastBinario);
-        broadcast.addAll(broadcastDecimal);
-        return broadcast;
-    }
 
 
     private static List<Integer> extratorDecimalDosOctetos(List<List<Integer>> enderecoDaRedeBinario) {
